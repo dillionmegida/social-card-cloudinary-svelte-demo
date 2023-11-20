@@ -11,21 +11,56 @@
 <CldOgImage
   src={post.image_id}
   alt={post.image_alt}
-  twitterTitle={post.title}
   width={960}
   height={600}
-  blur="500"
+  twitterTitle={post.title}
+  effects={[{ colorize: "100", color: "white" }]}
   overlays={[
     {
+      publicId: post.image_id,
+      position: {
+        gravity: "north_east",
+      },
+      effects: [
+        {
+          crop: "fill",
+          gravity: "auto",
+          width: 400,
+          height: 700,
+        },
+      ],
+    },
+    {
+      width: 350,
       crop: "fit",
-      width: "600",
       text: {
-        color: "white",
-        fontFamily: "Poppins",
-        fontSize: "80",
+        color: "black",
+        fontFamily: "Source Sans Pro",
+        fontSize: 60,
         fontWeight: "bold",
-        lineSpacing: "-45",
+        lineSpacing: "-20",
         text: post.title,
+      },
+      position: {
+        x: 70,
+        y: -80,
+        gravity: "west",
+      },
+    },
+    {
+      width: 300,
+      crop: "fit",
+      text: {
+        color: "black",
+        fontFamily: "Source Sans Pro",
+        fontSize: 30,
+        lineSpacing: "-10",
+        text: post.tagline,
+      },
+      position: {
+        x: 70,
+        y: 100,
+        gravity: "west",
       },
     },
   ]}

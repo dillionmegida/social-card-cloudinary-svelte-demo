@@ -11,10 +11,11 @@
 <CldOgImage
   src={post.image_id}
   alt={post.image_alt}
-  twitterTitle={post.title}
   width={960}
   height={600}
   blur="500"
+  twitterTitle={post.title}
+  effects={[{ colorize: "50", color: "black" }]}
   overlays={[
     {
       crop: "fit",
@@ -24,8 +25,27 @@
         fontFamily: "Poppins",
         fontSize: "80",
         fontWeight: "bold",
-        lineSpacing: "-45",
+        lineSpacing: "-60",
         text: post.title,
+        alignment: "center",
+      },
+      position: {
+        y: -40,
+      },
+    },
+    {
+      crop: "fit",
+      width: "350",
+      text: {
+        color: "white",
+        fontFamily: "Poppins",
+        fontSize: "20",
+        lineSpacing: "-10",
+        alignment: "center",
+        text: post.tagline,
+      },
+      position: {
+        y: 120,
       },
     },
   ]}
