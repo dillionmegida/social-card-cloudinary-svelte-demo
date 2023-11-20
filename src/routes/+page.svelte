@@ -5,7 +5,7 @@
   const posts = getContext("posts")
 </script>
 
-<main>
+<main class='container'>
   <div class="heading-with-dash">
     <h1>My Blog</h1>
   </div>

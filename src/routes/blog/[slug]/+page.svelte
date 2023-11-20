@@ -6,45 +6,42 @@
 
   const posts = getContext("posts")
   const post = posts.find(p => p.slug === `/blog/${data.slug}`)
-
-  function wrapText(text) {
-    return text.match(/.{1,10}/g).join("\n")
-  }
 </script>
 
-<CldOgImage src={post.image_id} />
+<CldOgImage
+  src={post.image_id}
+  alt={post.image_alt}
+  width={960}
+  height={600}
+  blur="500"
+  overlays={[
+    {
+      crop: "fit",
+      width: "600",
+      text: {
+        color: "white",
+        fontFamily: "Poppins",
+        fontSize: "80",
+        fontWeight: "bold",
+        lineSpacing: "-40",
+        // text: wrapText(post.title),
+        text: post.title,
+      },
+    },
+  ]}
+/>
 
-<main>
+<main class="container">
   <a class="home-link" href="/">&lt; Go Home</a>
   <div class="heading-with-dash">
     <h1>{post.title}</h1>
   </div>
   <div class="post__cover">
-    <!-- <CldImage
-      width={960}
-      height={600}
-      src={post.image_id}
-      alt={post.image_alt}
-    /> -->
     <CldImage
       width={960}
       height={600}
       src={post.image_id}
       alt={post.image_alt}
-      blur="500"
-      overlays={[
-        {
-          text: {
-            color: "white",
-            fontFamily: "Poppins",
-            fontSize: "80",
-            fontWeight: "bold",
-            lineSpacing: "14",
-            text: wrapText(post.title),
-            // text: post.title,
-          },
-        },
-      ]}
     />
   </div>
   <div class="post__content">{@html post.html}</div>
@@ -65,9 +62,9 @@
   }
 
   .post__cover {
-    border-radius: 5px;
+    border-radius: 20px;
     overflow: hidden;
-    margin: 20px 0;
+    margin: 20px auto;
   }
 
   .post__content {
